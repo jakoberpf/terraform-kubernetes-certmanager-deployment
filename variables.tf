@@ -1,4 +1,10 @@
 # Global
+# variable "name" {
+#   type        = string
+#   description = "The name of the deployment."
+#   default     = "cert-manager"
+# }
+
 variable "compartment" {
   type        = string
   description = "The compartment the ressource is deployed with."

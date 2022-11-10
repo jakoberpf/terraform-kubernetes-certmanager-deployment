@@ -22,7 +22,7 @@ data "kubectl_path_documents" "cert_manager" {
     namespace = var.namespace
   }
   sensitive_vars = {
-    cloudflare-api-token = var.cloudflare_tokens["erpf"].token
+    cloudflare-api-token = sensitive(var.cloudflare_tokens["erpf"].token)
   }
 }
 
@@ -30,7 +30,7 @@ resource "kubectl_manifest" "cert_manager" {
   for_each  = toset(data.kubectl_path_documents.cert_manager.documents)
   yaml_body = each.value
   sensitive_fields = [
-    "stringData.token"
+    "stringData"
   ]
   depends_on = [
     helm_release.cert_manager,

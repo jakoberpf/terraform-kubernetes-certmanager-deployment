@@ -3,7 +3,7 @@ resource "helm_release" "cert_reflector" {
   name       = "reflector"
   repository = "https://emberstack.github.io/helm-charts"
   chart      = "reflector"
-  version    = "6.1.9"
+  version    = var.helm_chart_version_reflector
   namespace  = var.namespace
 
   depends_on = [

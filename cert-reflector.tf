@@ -5,7 +5,6 @@ resource "helm_release" "cert_reflector" {
   chart      = "reflector"
   version    = var.helm_chart_version_reflector
   namespace  = var.namespace
-
   depends_on = [
     kubernetes_namespace.cert_manager,
   ]
